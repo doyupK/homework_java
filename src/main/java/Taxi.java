@@ -1,15 +1,19 @@
 public class Taxi extends Transport{
     String destination;               // 목적지
-    int meterFares;                   // 거리당 요금
+    int distanceFares;                   // 거리당 요금
     int basicFares;                   // 요금
+    int sumFares;                     // 요금 합계
     int income;                       // 금일 수입
-    String status= "일반";            //초기값 "일반"
-    int passengerKey;                      // 승객 정보
-
-    public Taxi(int basicFares, int meterFares, int suppliedGas) {
+    String passengerName;                 // 승객 정보
+    int standardDistance;
+    int destinationDistance;
+    BoardingInfo boardingInfo;
+    public Taxi(int basicFares, int distanceFares, int suppliedGas, int standardDistance) {
         this.basicFares = basicFares;
-        this.meterFares = meterFares;
+        this.distanceFares = distanceFares;
+        this.status = "일반";  //초기값 일반 /    일반or운행중
         this.suppliedGas = suppliedGas;
+        this.standardDistance = standardDistance;
     }
 
     void ride(String ride){    // 1= 운행 / 0 = 차고지
@@ -30,13 +34,15 @@ public class Taxi extends Transport{
         this.currentSpeed = speed;
     }
 
-    boolean take(int fares, String destination, int passengerKey){
+    boolean take(BoardingInfo boardingInfo){
         if (this.status.equals("일반")){
-            this.income += fares;
-            this.destination = destination;
+            this.passengerName = boardingInfo.passenger.name;
+            this.destination = boardingInfo.destination;
+            this.destinationDistance = boardingInfo.destinationDistance;
+            this.boardingInfo = boardingInfo;
             this.status="운행중";
-            this.passengerKey = passengerKey;
-            System.out.println(this.number+"번 택시 : 승객이 탑승 하였습니다");
+
+            System.out.println(this.number+"번 택시 : "+this.passengerName+" 승객이 탑승 하였습니다");
             return true;
         }
         else {
@@ -45,11 +51,11 @@ public class Taxi extends Transport{
         }
     }
 
-    void arrive(Passenger passenger){
-        int sum = this.meterFares;
+    void arrive(){
+        int charge = this.distanceCharge();
         System.out.println("목적지에 도착했습니다.");
-        passenger.payment(this.meterFares+this.basicFares);
-        this.income += sum;
+        boardingInfo.boardingPayment(charge);
+        this.income += charge;
         this.status = "일반";
         this.destination ="";
     }
@@ -61,5 +67,10 @@ public class Taxi extends Transport{
         }
         else System.out.println(this.number+"번 택시는 현재 대기 상태입니다.");
 
+    }
+
+    int distanceCharge(){
+        this.sumFares = boardingInfo.destinationDistance * this.distanceFares + this.basicFares;
+        return sumFares;
     }
 }

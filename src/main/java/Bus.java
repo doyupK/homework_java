@@ -62,7 +62,7 @@ public class Bus extends Transport{
 
     }
 
-    void arrive(){
+    void endService(){
         System.out.println("차고지에 도착했습니다.");
         System.out.println("금일 수입은 "+this.fares+"원이고, 잔여 연료는 "+this.fares+"입니다.");
         this.status = "차고지";
