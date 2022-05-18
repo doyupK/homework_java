@@ -11,7 +11,7 @@ public class Bus extends Transport{
         this.suppliedGas = suppliedGas;
     }
 
-    void ride(String ride){    // 1= 운행 / 0 = 차고지
+    void ride(){    // 1= 운행 / 0 = 차고지
         if(this.suppliedGas >= 20) this.status = "운행";
         else {
             System.out.println("연료가 20 미만입니다. 연료 보충을 한 뒤 운행 해주세요.");

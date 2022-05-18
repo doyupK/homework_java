@@ -73,7 +73,7 @@
       <workItem from="1652772370159" duration="1736000" />
       <workItem from="1652790969849" duration="5640000" />
       <workItem from="1652808712399" duration="72000" />
-      <workItem from="1652831591855" duration="14562000" />
+      <workItem from="1652831591855" duration="15234000" />
     </task>
     <task id="LOCAL-00001" summary="각 클래스&#10;택시, 버스, 승객, 대중교통 추가 및 작업">
       <created>1652835912677</created>
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652847948286</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="택시 탑승 시 탑승정보 객체 생성&#10;탑승정보 객체{&#10;택시정보, 이용자 정보, 목적지, 목적지 거리&#10;}&#10;&#10;택시 연료 소비 수정&#10;arrive시 거리 * 연비 계산하여 연료 소비">
+      <created>1652848942748</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652848942748</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
