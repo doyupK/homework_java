@@ -18,6 +18,7 @@ public class Bus extends Transport{
             this.status = "차고지";
         }
     }
+
     void setSuppliedGas(int liter){         // 주유량이 10 미만이면 메시지 출력
         this.suppliedGas = liter;
         if(this.suppliedGas<10) System.out.println("주유가 필요합니다");
@@ -25,17 +26,30 @@ public class Bus extends Transport{
     }
     void changeSpeed(int speed){
         if(this.suppliedGas<10){
-            System.out.println("주유량을 확인해주세요");
+            System.out.println("속도 변경 불가, 주유량을 확인해주세요");
         }
         else{
             this.currentSpeed = speed;
         }
     }
 
-    void take(int fares){
-        this.currentPassenger++;
-        this.income += fares;
+    boolean take(int fares){
+        if(this.status.equals("운행")) {
+            if (currentPassenger++ > maxPassenger) {
+                this.currentPassenger++;
+                this.income += fares;
+                return true;
+            } else {
+                System.out.println("현재 " + this.number + "번 버스는 승객 만원으로 탑승 불가합니다.");
+                return false;
+            }
+        }
+        else{
+            System.out.println("현재 " + this.number + "번 버스는 차고지이므로 탑승 불가합니다.");
+            return false;
+        }
     }
+
     @Override
     void showInfo(){
         if(status.equals("운행")) {
@@ -47,4 +61,11 @@ public class Bus extends Transport{
         }
 
     }
+
+    void arrive(){
+        System.out.println("차고지에 도착했습니다.");
+        System.out.println("금일 수입은 "+this.fares+"원이고, 잔여 연료는 "+this.fares+"입니다.");
+        this.status = "차고지";
+    }
+
 }

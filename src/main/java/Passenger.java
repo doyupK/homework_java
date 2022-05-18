@@ -14,9 +14,12 @@ public class Passenger {
     }
 
     void takeBus(Bus bus){
-        bus.take(bus.fares);
-        this.hasMoney -= bus.fares;
-        System.out.println(bus.number +"번 버스에 탑승합니다.");
+        boolean result;
+        result = bus.take(bus.fares);
+        if(result) {
+            this.hasMoney -= bus.fares;
+            System.out.println(bus.number + "번 버스 탑승.");
+        }
     }
 
     void takeTaxi(Taxi taxi, String destination) {
