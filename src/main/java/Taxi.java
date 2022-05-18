@@ -67,7 +67,7 @@ public class Taxi extends Transport {
     void arrive(){
         int charge = this.distanceCharge();
         this.fuel();
-        System.out.println("목적지에 도착했습니다.");
+        System.out.println("목적지에 도착했습니다. 요금은 "+charge+"원 입니다.");
         boardingInfo.boardingPayment(charge);
         this.income += charge;
         this.status = "일반";

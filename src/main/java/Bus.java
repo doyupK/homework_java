@@ -29,6 +29,7 @@ public class Bus extends Transport{
             System.out.println("속도 변경 불가, 주유량을 확인해주세요");
         }
         else{
+            System.out.println("속도 변경 "+this.currentSpeed+"==>"+speed);
             this.currentSpeed = speed;
         }
     }
