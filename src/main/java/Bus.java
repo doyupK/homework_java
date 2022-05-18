@@ -36,11 +36,15 @@ public class Bus extends Transport{
         this.currentPassenger++;
         this.income += fares;
     }
-
+    @Override
     void showInfo(){
-        System.out.println(number +"번 버스는 현재 "
-                +this.status+" 상태이며 요금은 "+fares+"원 이고, 현재 승객은"+currentPassenger+"명 입니다.");
-
+        if(status.equals("운행")) {
+            System.out.println(number + "번 버스는 현재 "
+                    + this.status + " 상태이며 요금은 " + fares + "원 이고, 현재 승객은" + currentPassenger + "명 입니다. 남은 연료는 "+
+                    this.suppliedGas+" 입니다.");
+        } else if (status.equals("차고지")) {
+            System.out.println("현재 차고지에 대기중입니다.");
+        }
 
     }
 }

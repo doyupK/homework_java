@@ -21,11 +21,15 @@ public class Passenger {
 
     void takeTaxi(Taxi taxi, String destination) {
         boolean result;
-        result = taxi.take(taxi.basicFares, destination);
+        result = taxi.take(taxi.basicFares, destination, passengerKey);
         if (result) {
-            this.hasMoney -= taxi.basicFares;
             System.out.println(taxi.number + "번 택시에 탑승합니다.");
         }
 
+    }
+
+    public void payment(int fare){
+        this.hasMoney -= fare;
+        System.out.println("요금 "+fare+"을 지불하고 잔액은 "+this.hasMoney+"원 입니다.");
     }
 }

@@ -9,4 +9,6 @@ public abstract class Transport {
     }
 
 
+    void showInfo(){}
+
 }
