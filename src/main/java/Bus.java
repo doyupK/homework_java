@@ -21,7 +21,7 @@ public class Bus extends Transport{
 
     void setSuppliedGas(int liter){         // 주유량이 10 미만이면 메시지 출력
         this.suppliedGas = liter;
-        if(this.suppliedGas<10) System.out.println("주유가 필요합니다");
+        if(this.suppliedGas<10) System.out.println("주유가 더 필요합니다");
 
     }
     void changeSpeed(int speed){
@@ -35,8 +35,8 @@ public class Bus extends Transport{
 
     boolean take(int fares){
         if(this.status.equals("운행")) {
-            if (currentPassenger++ > maxPassenger) {
-                this.currentPassenger++;
+            if (currentPassenger < maxPassenger) {
+                this.currentPassenger += 1;
                 this.income += fares;
                 return true;
             } else {
@@ -64,7 +64,10 @@ public class Bus extends Transport{
 
     void endService(){
         System.out.println("차고지에 도착했습니다.");
-        System.out.println("금일 수입은 "+this.fares+"원이고, 잔여 연료는 "+this.fares+"입니다.");
+        System.out.println("금일 수입은 "+this.fares+"원이고, 잔여 연료는 "+this.suppliedGas+"입니다.");
+        if(this.suppliedGas < 10){
+            System.out.println("연료 보충이 필요합니다.");
+        }
         this.status = "차고지";
     }
 
